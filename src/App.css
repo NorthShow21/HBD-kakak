@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Aclonica&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap");
+
+.page {
+  position: relative;
+  width: 100%;
+}
+
+.bg-image {
+  width: 100%;
+  height: auto; /* ⬅️ this keeps original image height */
+  display: block;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+h2 {
+  font-family: 'Aclonica', sans-serif;
+  color: white;
+  font-size: 2rem;
+}
+
+.hbd-image {
+  display: grid;
+}
+
+.hbd-image img {
+  display: block; /* Images are inline by default, this makes margin: auto work */
+  margin-left: auto; /* Centers the image horizontally */
+  margin-right: auto;
+  margin-top: 2.5rem;
+  /* Optional: Define a width, or the image will take 100% and won't appear centered */
+  width: 100%;
+}
+
+
+.photo-grid{
+  margin-top: 3.9rem;
+}
+
+.photo-grid .photo1{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.photo-grid .photo2{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.photo-grid .photo3{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.photo-grid img {
+  width: 9rem;
+  height: 9rem;
+  object-fit: cover;
+  margin: 1rem;
+  border-radius: 10px;
+}
+
+.ucapan{
+  margin-top: 10rem;
+}
+
+h3{
+  font-family: 'Rock Salt', cursive;
+  color: black;
+  text-align: center;
+  margin: 0 4rem;
+  font-size: 1rem;
+  line-height: 1.55rem;
+}
