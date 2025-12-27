@@ -3,12 +3,31 @@ import bg from './assets/bg.png'
 import photo1 from './assets/photo1.jpeg'
 import photo2 from './assets/photo2.jpeg'
 import photo3 from './assets/photo3.jpeg'
+import song from "./assets/lagu.mp3";
 import './App.css'
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import Confetti from "react-confetti";
+import { useWindowSize } from "react-use";
+
+
 
 
 function App() {
   const [showContent, setShowContent] = useState(false);
+  const { width, height } = useWindowSize();
+  const audioRef = useRef(null);
+  const [unlocked, setUnlocked] = useState(false);
+
+useEffect(() => {
+  audioRef.current = new Audio(song);
+  audioRef.current.loop = true;
+  audioRef.current.muted = true;
+
+  audioRef.current.play().catch(() => {
+    // autoplay might still fail silently
+  });
+}, []);
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -21,10 +40,32 @@ function App() {
   return (
     
     <>
-      <div className="page">
+      <div
+        className="page"
+        onClick={() => {
+          if (!unlocked && audioRef.current) {
+            audioRef.current.muted = false;
+            audioRef.current.volume = 0.8;
+            setUnlocked(true);
+          }
+        }}
+      >
         <img src={bg} alt="background" className="bg-image" />
 
         {showContent && (
+           <>
+          <Confetti
+            width={width}
+            height={height}
+            numberOfPieces={250}
+            recycle={false}
+          />
+          {!unlocked && (
+            <div className="tap-hint">
+              🔊 Tap anywhere for sound
+            </div>
+          )}
+
         <div className="content fade-in">
           <div className="hbd-image animate"> 
             <img  src={hbd} alt="" />
@@ -57,6 +98,7 @@ function App() {
         </div>
 
         </div>
+        </>
         )}
       </div>
     </>

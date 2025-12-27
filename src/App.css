@@ -167,4 +167,15 @@ h2 {
 .animate-stagger > *:nth-child(2) { animation-delay: 0.4s; }
 .animate-stagger > *:nth-child(3) { animation-delay: 0.6s; }
 
+.tap-hint {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+
 
