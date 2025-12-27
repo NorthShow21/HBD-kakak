@@ -15,18 +15,6 @@ function App() {
   const [unlocked, setUnlocked] = useState(false);
   const audioRef = useRef(null);
   const { width, height } = useWindowSize();
-  const fadeIn = () => {
-  let vol = 0;
-  audioRef.current.volume = 0;
-  audioRef.current.play();
-
-  const fade = setInterval(() => {
-    vol += 0.05;
-    audioRef.current.volume = Math.min(vol, 0.6);
-    if (vol >= 0.6) clearInterval(fade);
-  }, 200);
-};
-
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -38,7 +26,7 @@ function App() {
   const startMusic = () => {
     if (!unlocked && audioRef.current) {
       audioRef.current.volume = 0.8;
-      fadeIn();
+      audioRef.current.play();
       setUnlocked(true);
     }
   };
@@ -90,7 +78,10 @@ function App() {
                 <div className="box">
                   <h3 className="typewriter">Dear Kak Noel,</h3>
                   <p className="animate" style={{ animationDelay: "4s" }}>
-                    Udah 25 tahun aja, tua banget...
+                    Udah 25 tahun aja, tua banget. Jujurly to be honest, kita gatau mau kasih kado apa,
+                    jadi kita bikin website buat kadonya. Karena apa? karena kita anak computer science brooo.
+                    Jadi yaa... Happy Birthday ya kak, wish you all the best, semoga sehat selalu,
+                    panjang umur, dan semoga anaknya sehat
                   </p>
                   <h3 className="sign animate" style={{ animationDelay: "5s" }}>
                     Love, Nando & Abel &lt;3
