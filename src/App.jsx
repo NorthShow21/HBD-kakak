@@ -1,44 +1,63 @@
 import hbd from './assets/hbd.png'
-import bg from './assets/background.png'
+import bg from './assets/bg.png'
 import photo1 from './assets/photo1.jpeg'
 import photo2 from './assets/photo2.jpeg'
 import photo3 from './assets/photo3.jpeg'
-import bloon from './assets/bloon.jpeg'
 import './App.css'
+import { useEffect, useState } from "react";
+
 
 function App() {
+  const [showContent, setShowContent] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowContent(true);
+    }, 500); // delay sebelum fade in
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
+    
     <>
       <div className="page">
         <img src={bg} alt="background" className="bg-image" />
 
-        <div className="content">
-          <div className="hbd-image">
+        {showContent && (
+        <div className="content fade-in">
+          <div className="hbd-image animate"> 
             <img  src={hbd} alt="" />
           </div>
-          <div className='photo-grid'>
-            <div className='photo1'>
+          <div className='photo-grid' style={{ animationDelay: "0.2s" }}>
+            <div className='photo1 animate' style={{ animationDelay: "0.4s" }}>
               <img src={photo1} alt="" />
               <h2>2000s</h2>
             </div>
-            <div className='photo2'>
+            <div className='photo2 animate' style={{ animationDelay: "0.8s" }}>
               <h2>2010s</h2>
               <img src={photo2} alt="" />
             </div>
-            <div className='photo2'>
+            <div className='photo3 animate' style={{ animationDelay: "1.2s" }}>
               <img src={photo3} alt="" />
               <h2>2025</h2>
             </div>
           </div>
-          <div className='ucapan'>
-            <h3>Dear Kak Noel,</h3>
-            <br />
-            <h3>Udah 25 tahun aja, tua banget. Jujurly to be honest, kita gatau mau kasih kado apa , jadi kita bikin website buat kadonya. Karena apa? karena kita anak computer science brooo. Jadi yaa...Happy Birthday ya kak, wish you all the best, semoga sehat selalu, panjang umur, dan semoga anaknya sehat</h3>
-            <br />
-            <h3>Love, Nando & Abel {'<'}3</h3>
+          <div className="ucapan animate" style={{ animationDelay: "0.4s" }}>
+          <div className="box">
+            <h3 className="typewriter">Dear Kak Noel,</h3>
+            <p className="animate" style={{ animationDelay: "4s" }}>
+              Udah 25 tahun aja, tua banget. Jujurly to be honest, kita gatau mau kasih kado apa,
+              jadi kita bikin website buat kadonya. Karena apa? karena kita anak computer science brooo.
+              Jadi yaa... Happy Birthday ya kak, wish you all the best, semoga sehat selalu,
+              panjang umur, dan semoga anaknya sehat
+            </p>
+            <h3 className="sign animate" style={{ animationDelay: "5s" }}>Love, Nando & Abel &lt;3</h3>
           </div>
         </div>
+
+        </div>
+        )}
       </div>
     </>
   )
